@@ -16,10 +16,11 @@ router.post("/",async (req,res)=>{
 	console.log("POST")
 	const {name,tech,sub} = req.body
 	console.log(name,tech,sub,req.body)
-    const insert = await Alien({name,tech,sub})
+    
 	try{
-     const data = await insert.save()
-     res.json(data)
+		const insert = await Alien({name,tech,sub})
+     	await insert.save()
+     	res.json(insert);
 	}catch(err){
 		console.log("Error" + err)
 	}

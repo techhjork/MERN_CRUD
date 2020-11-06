@@ -2,15 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require("cors")
 const url = 'mongodb://localhost:27017/CRUD'
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const app = express()
-
 app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(express.urlencoded({extended:true}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 /*
 app.use((req,res,next)=>{
@@ -30,7 +31,7 @@ con.on('open', () => {
     console.log('connected...')
 })
 
-app.use(express.json())
+// app.use(express.json())
 
 const alienRouter = require('./routes/alien')
 app.use('/aliens',alienRouter)

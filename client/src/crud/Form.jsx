@@ -31,16 +31,16 @@ class FormComponenet extends Component{
         e.preventDefault()
          console.log(this.state)
         let state = this.state
-
-        await axios.post("https://localhost:9000/aliens",state, {
+        try{
+            const response = await axios.post("http://localhost:9000/aliens",JSON.stringify(state),{
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json'
                 },
-                timeout: 15000
-            })
-        .then(res=>console.log(res))
-        .catch(err=> console.log(err))
+            });
+            console.log(response.data);
+        }catch(err){
+            console.log(err);
+        }
 	}
 	render(){
 	return(
